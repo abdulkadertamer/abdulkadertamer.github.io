@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Abdelkader Tamer · AI Engineer</title>
+<meta name="description" content="Abdelkader Tamer builds LLM agents, RAG chatbots, machine learning models and data tools. AI Engineering student in Mansoura, Egypt, and co-founder of Liminal AI Studio.">
+<!-- Direction (unslop by Damir Sokolovsky, @heydamir, CC BY 4.0)
+ Product: the personal site of an AI engineering student who ships agents, models and data work
+ Character: precise, curious, unpretentious
+ World: an engineering notebook on squared paper, ink and one red pencil
+ Moments: each project's one real number or formula, set large
+ Signature: the margin notes in mono, like a lab notebook -->
+<style>
+@font-face{font-family:News;src:url(assets/newsreader-latin-400-normal.woff2);font-weight:400;font-display:swap}
+@font-face{font-family:News;src:url(assets/newsreader-latin-500-normal.woff2);font-weight:500;font-display:swap}
+@font-face{font-family:Plex;src:url(assets/ibm-plex-sans-latin-400-normal.woff2);font-weight:400;font-display:swap}
+@font-face{font-family:Plex;src:url(assets/ibm-plex-sans-latin-500-normal.woff2);font-weight:500;font-display:swap}
+@font-face{font-family:Mono;src:url(assets/ibm-plex-mono-latin-400-normal.woff2);font-display:swap}
+:root{--paper:#f6f4ef;--card:#fbfaf6;--line:rgba(22,22,26,.1);--grid:rgba(22,22,26,.045);--ink:#16161a;--ink2:#4a4b52;--ink3:#74757c;--red:#c2412b}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:Plex,system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+ background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+nav{display:flex;align-items:center;gap:28px;height:72px;font-size:15px}
+nav .me{font-family:News;font-size:20px;font-weight:500;text-decoration:none}
+nav .links{display:flex;gap:24px;margin-left:auto;color:var(--ink2)}
+nav .links a{text-decoration:none}nav .links a:hover{color:var(--ink)}
+.cv{border:1px solid var(--ink);border-radius:8px;padding:6px 14px;text-decoration:none;font-weight:500}
+.cv:hover{background:var(--ink);color:var(--paper)}
+.hero{display:grid;grid-template-columns:1fr 280px;gap:64px;padding:96px 0 88px;align-items:end}
+h1{font-family:News;font-weight:400;font-size:64px;line-height:1.05;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--red)}
+.lede{font-size:20px;color:var(--ink2);margin-top:24px;max-width:38rem}
+.acts{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+.b1,.b2{height:46px;padding:0 20px;border-radius:10px;display:inline-flex;align-items:center;text-decoration:none;font-weight:500;font-size:15px;transition:background-color .15s,color .15s}
+.b1{background:var(--ink);color:var(--paper)}.b1:hover{background:#2c2c33}
+.b2{border:1px solid var(--line);background:var(--card)}.b2:hover{border-color:var(--ink)}
+.margin{font-family:Mono;font-size:13px;color:var(--ink3);border-left:1px solid var(--red);padding-left:16px;line-height:1.9}
+.margin b{font-weight:400;color:var(--ink)}
+section{padding:72px 0;border-top:1px solid var(--line)}
+.sh{display:flex;align-items:baseline;gap:16px;margin-bottom:36px}
+h2{font-family:News;font-weight:400;font-size:38px;line-height:1.2;letter-spacing:-.01em}
+.sh span{font-family:Mono;font-size:13px;color:var(--ink3)}
+.proj{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;padding:40px 0;border-bottom:1px solid var(--line);align-items:start}
+.proj:last-child{border-bottom:0}
+.proj h3{font-family:News;font-weight:500;font-size:28px;line-height:1.2}
+.proj .tags{font-family:Mono;font-size:12.5px;color:var(--ink3);margin-top:8px}
+.proj p{color:var(--ink2);margin-top:14px}
+.proj ul{margin:12px 0 0 18px;color:var(--ink2)}.proj li{margin-bottom:6px}
+.proj .lnk{display:inline-block;margin-top:16px;font-size:15px;font-weight:500;text-decoration-color:var(--red);text-underline-offset:4px}
+.fig{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;align-self:start}
+.fig .cap{font-family:Mono;font-size:12px;color:var(--ink3);margin-bottom:14px}
+.formula{font-family:Mono;font-size:15px;line-height:2;color:var(--ink)}
+.formula .r{color:var(--red)}
+.agents{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}
+.agents div{border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:14px}
+.agents b{font-weight:500}.agents small{display:block;color:var(--ink3);font-size:12.5px}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{font-weight:400;color:var(--ink3);text-align:left;font-size:12.5px;padding:6px 8px;border-bottom:1px solid var(--line)}
+td{padding:9px 8px;border-bottom:1px solid var(--line)}td.n{font-family:Mono;text-align:right}
+tr.best td{color:var(--red)}
+.big{font-family:News;font-size:56px;line-height:1;color:var(--red);margin-bottom:6px}
+.shot{border-radius:10px;overflow:hidden;border:1px solid var(--line)}.shot img{display:block;width:100%;height:auto}
+.tl{display:grid;gap:0}
+.row{display:grid;grid-template-columns:160px 1fr;gap:32px;padding:22px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row .when{font-family:Mono;font-size:13px;color:var(--ink3);padding-top:4px}
+.row h4{font-weight:500;font-size:18px}.row p{color:var(--ink2);margin-top:4px}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.skills h4{font-family:Mono;font-weight:400;font-size:13px;color:var(--red);margin-bottom:10px}
+.skills p{color:var(--ink2);font-size:15.5px;line-height:1.9}
+.contact{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:end}
+.contact p{font-size:20px;color:var(--ink2);margin-top:16px;max-width:34rem}
+.clist{font-family:Mono;font-size:14px;display:grid;gap:10px}
+.clist a{text-decoration:none;display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:10px}
+.clist a:hover{color:var(--red)}
+footer{padding:32px 0 48px;font-family:Mono;font-size:12.5px;color:var(--ink3)}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:4px}
+@media (max-width:760px){
+ body{font-size:16px}.wrap{padding:0 20px}
+ nav .links{display:none}nav .cv{margin-left:auto}
+ .hero{grid-template-columns:1fr;gap:36px;padding:56px 0 56px}
+ h1{font-size:42px}.lede{font-size:18px}
+ .proj,.contact{grid-template-columns:1fr;gap:24px}
+ .row{grid-template-columns:1fr;gap:4px}
+ .skills{grid-template-columns:1fr 1fr}
+ h2{font-size:30px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><a class="me" href="#">Abdelkader Tamer</a>
+<div class="links"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div>
+<a class="cv" href="Abdelkader_Tamer_Resume.pdf">CV</a></nav>
+
+<header class="hero">
+ <div>
+  <h1>I build AI that has to be <em>right</em>, not just fluent.</h1>
+  <p class="lede">AI Engineering student in Mansoura, Egypt, and co-founder of Liminal AI Studio. I work on LLM agents, RAG chatbots, machine learning models and the data pipelines under them, in Arabic and English.</p>
+  <div class="acts"><a class="b1" href="#work">See projects</a><a class="b2" href="https://github.com/abdulkadertamer">GitHub</a><a class="b2" href="https://www.linkedin.com/in/abdulkader-tamer-b65193294">LinkedIn</a></div>
+ </div>
+ <aside class="margin">
+  <b>Mansoura National University</b><br>B.Sc. AI Engineering, 2027<br><br>
+  <b>Liminal AI Studio</b><br>Co-founder<br><br>
+  <b>IEEE MansNU CS Chapter</b><br>Chairman
+ </aside>
+</header>
+
+<section id="work">
+ <div class="sh"><h2>Selected work</h2><span>4 projects</span></div>
+
+ <article class="proj">
+  <div>
+   <h3>Maqbool</h3>
+   <div class="tags">Multi-agent · Flowise · Express · PostgreSQL · React</div>
+   <p>A job-application platform run by agents. They search real open roles, score how well a CV fits each one, draft the application, and keep every step in a database with a full history.</p>
+   <ul><li>The fit score is a fixed formula, and every skill it counts has to point to a named project in the CV.</li>
+   <li>Agents can only write through an API that validates each value, so a wrong status from the model returns an error instead of a bad row.</li></ul>
+   <a class="lnk" href="https://github.com/abdulkadertamer/maqbool">Code on GitHub</a>
+  </div>
+  <div class="fig"><div class="cap">fit score, per job</div>
+   <div class="formula">match = <span class="r">70</span> × must_haves_met / must_haves<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ <span class="r">30</span> × nice_to_haves_met / nice_to_haves</div>
+   <div class="agents"><div><b>Scout</b><small>real listings, Remotive API</small></div><div><b>Fit</b><small>score with evidence</small></div><div><b>Writer</b><small>letters, CV bullets</small></div><div><b>Tracker</b><small>the only path to the DB</small></div></div>
+  </div>
+ </article>
+
+ <article class="proj">
+  <div>
+   <h3>Food Calorie Estimator</h3>
+   <div class="tags">CLIP · scikit-learn · PyTorch · Gradio</div>
+   <p>Upload a photo of food and get its calories and nutrients. CLIP recognises the food zero-shot among 230 classes, then a regression model trained on 8,789 USDA foods predicts the calories.</p>
+   <ul><li>I compared five models with 5-fold cross-validation and grid search.</li>
+   <li>The simplest one won, because calories are close to a linear function of fat, protein and carbohydrates.</li></ul>
+   <a class="lnk" href="https://github.com/abdulkadertamer/food-calorie-estimator-advanced">Code on GitHub</a>
+  </div>
+  <div class="fig"><div class="cap">test set, 5 models</div>
+   <div class="big">R² 0.9947</div>
+   <table><tr><th>Model</th><th style="text-align:right">R²</th><th style="text-align:right">MAE kcal</th></tr>
+   <tr class="best"><td>Linear Regression</td><td class="n">0.9947</td><td class="n">6.42</td></tr>
+   <tr><td>Gradient Boosting</td><td class="n">0.9941</td><td class="n">6.53</td></tr>
+   <tr><td>Random Forest, tuned</td><td class="n">0.9915</td><td class="n">7.10</td></tr>
+   <tr><td>Decision Tree</td><td class="n">0.9822</td><td class="n">13.79</td></tr></table>
+  </div>
+ </article>
+
+ <article class="proj">
+  <div>
+   <h3>Liminal AI Studio website</h3>
+   <div class="tags">Next.js · React · Tailwind · Azure · GitHub Actions</div>
+   <p>The site for the studio I co-founded. Service pages, a digital store, and a protected admin console to edit content and receive requests without touching code. Every merge to main deploys automatically.</p>
+  </div>
+  <div class="shot"><img src="assets/liminal.png" alt="Home page of the Liminal AI Studio website" loading="lazy" width="1516" height="600"></div>
+ </article>
+
+ <article class="proj">
+  <div>
+   <h3>Heart Failure Detection</h3>
+   <div class="tags">TensorFlow · scikit-learn</div>
+   <p>A classification model that flags heart failure risk from clinical records. Alongside it, Mediscienta: a clinical summary and risk-flagging prototype for diabetic retinopathy over a 100-patient simulated dataset, presented to faculty.</p>
+  </div>
+  <div class="fig"><div class="cap">precision</div><div class="big">95%+</div></div>
+ </article>
+</section>
+
+<section id="experience">
+ <div class="sh"><h2>Experience</h2></div>
+ <div class="tl">
+  <div class="row"><div class="when">2026 – now</div><div><h4>Co-founder, Liminal AI Studio</h4><p>Chatbots that answer from a client's own documents, n8n and Python automations, and the studio website. Every bot is tested against real customer questions before it ships.</p></div></div>
+  <div class="row"><div class="when">2026 – now</div><div><h4>Chairman, IEEE MansNU Computer Society Chapter</h4><p>Opened the AI, Flutter and Backend tracks, wrote the technical interview questions and interviewed applicants.</p></div></div>
+  <div class="row"><div class="when">2025 – 2026</div><div><h4>Vice Leader, Coaching Committee, IEEE MNU Student Branch</h4><p>Technical and career sessions for students. Certificate of Appreciation for the season.</p></div></div>
+  <div class="row"><div class="when">2025 – 2026</div><div><h4>Training</h4><p>Agentic AI, 125 hours, Creativa Innovation Hub · Machine Learning for Data Analysis, 120 hours, NTI and ITIDA, final score 91.5% · NVIDIA Getting Started with Deep Learning · Google Cloud Introduction to LLMs</p></div></div>
+ </div>
+</section>
+
+<section id="skills">
+ <div class="sh"><h2>Skills</h2></div>
+ <div class="skills">
+  <div><h4>code</h4><p>Python<br>SQL<br>JavaScript<br>C/C++<br>HTML/CSS</p></div>
+  <div><h4>ml + data</h4><p>scikit-learn<br>TensorFlow, PyTorch<br>Pandas, NumPy<br>Power BI, Excel</p></div>
+  <div><h4>llms</h4><p>RAG<br>Tool calling<br>Prompt writing<br>Output testing<br>Flowise, n8n</p></div>
+  <div><h4>languages</h4><p>Arabic, native<br>English, professional</p></div>
+ </div>
+</section>
+
+<section id="contact">
+ <div class="contact">
+  <div><h2>Have a problem worth automating?</h2><p>Write to me with what you have now and what you want to happen.</p></div>
+  <div class="clist">
+   <a href="mailto:abdotamer8900@gmail.com"><span>Email</span><span>abdotamer8900@gmail.com</span></a>
+   <a href="https://www.linkedin.com/in/abdulkader-tamer-b65193294"><span>LinkedIn</span><span>abdulkader-tamer</span></a>
+   <a href="https://github.com/abdulkadertamer"><span>GitHub</span><span>abdulkadertamer</span></a>
+   <a href="Abdelkader_Tamer_Resume.pdf"><span>CV</span><span>PDF, 1 page</span></a>
+  </div>
+ </div>
+</section>
+<footer>Abdelkader Tamer · Mansoura, Egypt · 2026</footer>
+</div>
+</body>
+</html>
